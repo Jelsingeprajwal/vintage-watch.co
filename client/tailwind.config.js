@@ -1,0 +1,42 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        "peach-50": "#fffdf8",
+        "peach-100": "#fff7ea",
+        "peach-200": "#fff4e0",
+        "peach-300": "#ffeed2",
+        "peach-400": "#ffebc9",
+        "peach-500": "#ffe6bc",
+        "peach-600": "#e8d1ab",
+        "peach-700": "#b5a385",
+        "peach-800": "#8c7f67",
+        "peach-900": "#6b614f",
+        "isabelline-50": "#fefefd",
+        "isabelline-100": "#fdfbf8",
+        "isabelline-200": "#fbf9f5",
+        "isabelline-300": "#faf6f1",
+        "isabelline-400": "#f9f4ee",
+        "isabelline-500": "#f7f1ea",
+        "isabelline-600": "#e1dbd5",
+        "isabelline-700": "#afaba6",
+        "isabelline-800": "#888581",
+        "isabelline-900": "#686562",
+        "black-50": "#e6e6e6",
+        "black-100": "#b0b0b0",
+        "black-200": "#8a8a8a",
+        "black-300": "#545454",
+        "black-400": "#333333",
+        "black-500": "#000000",
+      },
+      fontFamily: {
+        josefinSans: ["Josefin Sans", "sans-serif"],
+        redHatDisplay: ["Red Hat Display", "sans-serif"],
+        cormorantUpright: ["Cormorant Upright", "sans-serif"],
+      },
+    },
+  },
+  plugins: [],
+};
