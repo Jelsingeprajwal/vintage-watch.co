@@ -99,6 +99,16 @@ const SignUp = () => {
             Join vintage watch.co
           </button>{" "}
           <br />
+          <span className="flex  justify-end gap-1 mt-2 text-sm">
+            Already have an accout?{" "}
+            <a
+              href="/signin"
+              className="text-blue-200 underline underline-offset-2"
+            >
+              {" "}
+              sign in
+            </a>
+          </span>
           {/* <span className="inline-block py-4 text-center w-full ">or</span>{" "}
           <br />
           <button

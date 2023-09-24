@@ -1,14 +1,14 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../userContext";
-import CartIcon from "../assets/ShoppingCart.svg";
-import SearchIcon from "../assets/Vector.svg";
+// import CartIcon from "../assets/ShoppingCart.svg";
+// import SearchIcon from "../assets/Vector.svg";
 import Profile from "../assets/profile.jpg";
 const Header = () => {
   const { user } = useContext(UserContext);
-  const [query, setQuery] = useState("");
+  // const [query, setQuery] = useState("");
 
   return (
-    <header className="flex justify-between items-center font-josefinSans w-full h-16">
+    <header className="flex justify-between items-center font-josefinSans w-full h-[10vh] z-40 ">
       {/* Logo */}
       <React.Fragment>
         <h1 className="font-cormorantUpright text-4xl font-semibold">
@@ -41,7 +41,7 @@ const Header = () => {
         </ul>
       </nav>
       {/* Search Bar */}
-      <div className="flex border-2 border-black-300 px-4 py-1 items-center rounded-full w-[192px]">
+      {/* <div className="flex border-2 border-black-300 px-4 py-1 items-center rounded-full w-[192px]">
         <div className="flex items-center gap-[10px] ">
           <label htmlFor="query">
             <img src={SearchIcon} className="w-5 h-5" alt="Magnifying Glass" />
@@ -65,14 +65,17 @@ const Header = () => {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* Profile Icon */}
-      <div className=" w-10 h-10 rounded-full">
-        <img
-          src={Profile}
-          alt="Profile Pic/Icon"
-          className="object-cover w-10 h-10 rounded-full"
-        />
+      <div className="flex gap-4 items-center">
+        {user ? <a href="/signin">Sign out</a> : <a href="/signup">Sign up</a>}
+        <div className=" w-10 h-10 rounded-full">
+          <img
+            src={Profile}
+            alt="Profile Pic/Icon"
+            className="object-cover w-10 h-10 rounded-full"
+          />
+        </div>
       </div>
     </header>
   );
