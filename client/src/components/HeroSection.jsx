@@ -9,7 +9,7 @@ const HeroSection = () => {
         className="w-full  bg-contain bg-right bg-no-repeat py-16"
         style={{ backgroundImage: `url(${HeroBg})` }}
       >
-        <h1 className="text-[64px] font-cormorantUpright font-bold text-peach-100 mb-5 pt-14">
+        <h1 className="text-[64px] font-cormorantUpright tracking-[5.12px] font-bold text-peach-100 mb-5 pt-14">
           Keepers of Time.
         </h1>
         <h1 className="uppercase tracking-[7px] font-josefinSans font-light text-4xl mb-2">

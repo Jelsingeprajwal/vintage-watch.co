@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -101,13 +101,13 @@ const SignUp = () => {
           <br />
           <span className="flex  justify-end gap-1 mt-2 text-sm">
             Already have an accout?{" "}
-            <a
-              href="/signin"
+            <Link
+              to="/signin"
               className="text-blue-200 underline underline-offset-2"
             >
               {" "}
               sign in
-            </a>
+            </Link>
           </span>
           {/* <span className="inline-block py-4 text-center w-full ">or</span>{" "}
           <br />

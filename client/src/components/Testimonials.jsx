@@ -47,7 +47,7 @@ const Testimonials = () => {
             />
             <div className="flex flex-col items-end">
               <p className="text-isabelline-500">
-                Unique design and top quality. Impressed with craftsmanship.
+                Staple in my wardrobe. Beautiful piece of history.
               </p>
               <span>username</span>
             </div>
@@ -64,7 +64,7 @@ const Testimonials = () => {
             />
             <div className="flex flex-col items-end">
               <p className="text-isabelline-500">
-                Unique design and top quality. Impressed with craftsmanship.
+                Preserving treasures. Proud to own.
               </p>
               <span>username</span>
             </div>
@@ -77,7 +77,7 @@ const Testimonials = () => {
             />
             <div className="flex flex-col items-end">
               <p className="text-isabelline-500">
-                Unique design and top quality. Impressed with craftsmanship.
+                Still going strong. Craftsmanship is special.
               </p>
               <span>username</span>
             </div>

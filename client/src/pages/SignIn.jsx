@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { UserContext } from "../userContext";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -68,20 +68,20 @@ const SignIn = () => {
           <br />
           <button
             type="submit"
-            className="px-24 mt-8 h-12 outline bg-peach-200 text-black-500 font-medium rounded-[5px] text-xl"
+            className="px-24 mt-8 h-12 min-w-[400px] outline bg-peach-200 text-black-500 font-medium rounded-[5px] text-xl"
           >
-            Join vintage watch.co
+            Sign in
           </button>{" "}
           <br />
           <span className="flex  justify-end gap-1 mt-2 text-sm">
             Don't have an accout?{" "}
-            <a
-              href="/signup"
+            <Link
+              to="/signup"
               className="text-blue-200 underline underline-offset-2"
             >
               {" "}
               sign up
-            </a>
+            </Link>
           </span>
           {/* <span className="inline-block py-4 text-center w-full ">or</span>{" "}
           <br />

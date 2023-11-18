@@ -36,6 +36,9 @@ module.exports = {
         redHatDisplay: ["Red Hat Display", "sans-serif"],
         cormorantUpright: ["Cormorant Upright", "sans-serif"],
       },
+      boxShadow: {
+        small: "0px 0px 11px 4px rgba(255, 244, 224, 0.25)",
+      },
     },
   },
   plugins: [],

@@ -11,6 +11,10 @@
 
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 input {
   outline: 0;
   background-color: transparent;

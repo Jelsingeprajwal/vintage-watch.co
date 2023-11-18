@@ -21,17 +21,17 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/" className="opacity-80 hover:opacity-100">
+                <a href="/aboutus" className="opacity-80 hover:opacity-100">
                   About Us
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="/" className="opacity-80 hover:opacity-100">
                   Collections
                 </a>
-              </li>
+              </li> */}
               <li>
-                <a href="/" className="opacity-80 hover:opacity-100">
+                <a href="/contact" className="opacity-80 hover:opacity-100">
                   Contact Us
                 </a>
               </li>

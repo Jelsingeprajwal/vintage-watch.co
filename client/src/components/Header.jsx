@@ -1,42 +1,46 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../userContext";
 // import CartIcon from "../assets/ShoppingCart.svg";
 // import SearchIcon from "../assets/Vector.svg";
 import Profile from "../assets/profile.jpg";
+import axios from "axios";
+import { Link } from "react-router-dom";
 const Header = () => {
-  const { user } = useContext(UserContext);
-  // const [query, setQuery] = useState("");
-
+  const { user, setUser } = useContext(UserContext);
+  const handleSignOut = async () => {
+    await axios.post("/signout");
+    setUser(null);
+  };
   return (
-    <header className="flex justify-between items-center font-josefinSans w-full h-[10vh] z-40 ">
+    <header className="flex justify-between items-center font-josefinSans w-full h-[10vh] min-h-[64px] z-40 ">
       {/* Logo */}
       <React.Fragment>
-        <h1 className="font-cormorantUpright text-4xl font-semibold">
+        <a href="/" className="font-cormorantUpright text-4xl font-semibold">
           Vintage Watch.co
-        </h1>
+        </a>
       </React.Fragment>
       {/* Navigation Menu */}
       <nav>
         <ul className="flex gap-4 ">
           <li>
-            <a href="/" className="opacity-80 hover:opacity-100">
+            <Link to="/" className="opacity-80 hover:opacity-100">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/" className="opacity-80 hover:opacity-100">
+            <Link to="/aboutus" className="opacity-80 hover:opacity-100">
               About Us
-            </a>
+            </Link>
           </li>
-          <li>
-            <a href="/" className="opacity-80 hover:opacity-100">
+          {/* <li>
+            <a href="#collections" className="opacity-80 hover:opacity-100">
               Collections
             </a>
-          </li>
+          </li> */}
           <li>
-            <a href="/" className="opacity-80 hover:opacity-100">
+            <Link to="/contact" className="opacity-80 hover:opacity-100">
               Contact Us
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -68,14 +72,23 @@ const Header = () => {
       </div> */}
       {/* Profile Icon */}
       <div className="flex gap-4 items-center">
-        {user ? <a href="/signin">Sign out</a> : <a href="/signup">Sign up</a>}
-        <div className=" w-10 h-10 rounded-full">
+        {user ? (
+          <button type="button" onClick={handleSignOut}>
+            Sign out
+          </button>
+        ) : (
+          <Link to="/signin">Sign in</Link>
+        )}
+        <Link
+          to={user ? "profile" : "signin"}
+          className=" w-10 h-10 rounded-full"
+        >
           <img
             src={Profile}
             alt="Profile Pic/Icon"
             className="object-cover w-10 h-10 rounded-full"
           />
-        </div>
+        </Link>
       </div>
     </header>
   );

@@ -18,7 +18,7 @@ function getUserDataFromReq(req) {
 
 module.exports.signin_post = async (req, res) => {
   const { email, password } = req.body;
-  console.log({ email, password });
+  // console.log({ email, password });
   const userDoc = await User.findOne({ email: email });
   // userDoc is the user document
   res.setHeader("one", "one");
@@ -59,5 +59,11 @@ module.exports.signup_post = async (req, res) => {
 
 module.exports.profile_get = async (req, res) => {
   const userDataFromReq = await getUserDataFromReq(req);
-  res.json(userDataFromReq);
+  const userDoc = await User.findOne({ email: userDataFromReq.email });
+  // console.log(userDoc);
+  res.json(userDoc);
+};
+
+module.exports.logout_post = async (req, res) => {
+  res.clearCookie("token").json("Logged out");
 };

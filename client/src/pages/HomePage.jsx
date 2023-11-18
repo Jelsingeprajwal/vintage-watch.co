@@ -11,7 +11,7 @@ const HomePage = () => {
       <HeroSection />
       <Collections />
       <FavProducts />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Footer />
     </>
   );
