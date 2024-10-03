@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/authRoutes.js");
 const { default: mongoose } = require("mongoose");
 const cors = require("cors");
+const routes = require("./routes/routes.js");
 const app = express();
 require("dotenv").config();
 
@@ -30,6 +31,7 @@ app.get("/", (req, res) => {
   res.send("test");
 });
 app.use(authRoutes);
+app.use(routes);
 
 app.listen(3030, () => {
   console.log("listening to port 3030");

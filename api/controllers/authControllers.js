@@ -58,7 +58,7 @@ module.exports.signup_post = async (req, res) => {
 };
 
 module.exports.profile_get = async (req, res) => {
-  const userDataFromReq = await getUserDataFromReq(req);
+  const userDataFromReq = await getUserDataFromReq(req); // logged in user data ;-)
   const userDoc = await User.findOne({ email: userDataFromReq.email });
   // console.log(userDoc);
   res.json(userDoc);

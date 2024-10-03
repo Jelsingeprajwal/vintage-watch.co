@@ -9,10 +9,15 @@ import ProfileForm from "../components/ProfileForm";
 // import ProfileCard from "../components/ProfileCard";
 
 const ProfilePage = () => {
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [subpage, setSubpage] = useState("profile");
   const [redirect, setRedirect] = useState(null);
   const [editProfile, setEditProfile] = useState(false);
+  let address = "";
+  console.log(user)
+  Object.values(user?.address).forEach((element) => {
+    address += element + " ";
+  });
   const handleSignOut = async () => {
     await axios.post("/signout");
     setRedirect("/");
@@ -21,7 +26,7 @@ const ProfilePage = () => {
   if (redirect) {
     return <Navigate to={redirect} />;
   }
-
+  const handleEditBtn = (ev) => setEditProfile(!editProfile);
   const handleButton = (ev) => setSubpage(ev.target.value);
   return (
     <Fragment>
@@ -67,78 +72,79 @@ const ProfilePage = () => {
             </div>
             {/* Profile Card */}
             {/* {profileContent} */}
-            {!editProfile && (
-              <div>
-                <h1 className="text-2xl font-semibold tracking-[1.9px]">
-                  Joseph Morino
-                </h1>
-                <div className="mt-9">
-                  <h1 className="font-bold">Contact Information</h1>
-                  <div className="flex flex-col gap-1 mt-4">
-                    <div>
-                      <b>Email</b>
-                      <span>
-                        <span>:</span>
-                        <span className="ml-12">
-                          jelsinge.prajwal@gmail.com
+            <div className="w-full">
+              {!editProfile && (
+                <div>
+                  <h1 className="text-2xl font-semibold tracking-[1.9px]">
+                    {user?.lastName + " " + user?.firstName}
+                  </h1>
+                  <div className="mt-9">
+                    <h1 className="font-bold">Contact Information</h1>
+                    <div className="flex flex-col gap-1 mt-4">
+                      <div>
+                        <b>Email</b>
+                        <span>
+                          <span>:</span>
+                          <span className="ml-12">{user?.email}</span>
                         </span>
-                      </span>
-                    </div>{" "}
-                    <div>
-                      <b>Phone</b>
-                      <span>
-                        <span>:</span>
-                        <span className="ml-10">+91 9999999999</span>
-                      </span>
-                    </div>{" "}
-                    <div>
-                      <b>Address</b>
-                      <span>
-                        <span>:</span>
-                        <ul className="w-[30ch] inline-flex flex-col gap-5 list-decimal list-outside ml-12 ">
-                          <li>
-                            LIGH 201, Near Adithya Bakery, Bharath Nagar Colony,
-                            Moosapet, Hyderabad, 500018
-                          </li>
-                          <li>
-                            LIGH 201, Near Adithya Bakery, Bharath Nagar Colony,
-                            Moosapet, Hyderabad, 500018
-                          </li>
-                        </ul>
-                      </span>
+                      </div>{" "}
+                      <div>
+                        <b>Phone</b>
+                        <span>
+                          <span>:</span>
+                          <span className="ml-10">{user?.phoneNumber}</span>
+                        </span>
+                      </div>{" "}
+                      <div>
+                        <b>Address</b>
+                        <span>
+                          <span>:</span>
+                          <ul className="w-[30ch] inline-flex flex-col gap-5 list-decimal list-outside ml-12 ">
+                            <li>
+                              {user?.address || user?.address != null
+                                ? `${address}`
+                                : "LIGH 201, Near Adithya Bakery, Bharath Nagar Colony, Moosapet, Hyderabad, 500018"}
+                            </li>
+                            {/* <li>
+                              LIGH 201, Near Adithya Bakery, Bharath Nagar
+                              Colony, Moosapet, Hyderabad, 500018
+                            </li> */}
+                          </ul>
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                {/* Basic Information */}
-                <div className="mt-9">
-                  <h1 className="font-bold">Basic Information</h1>
-                  <div className="flex flex-col gap-1 mt-4">
-                    <div>
-                      <b>Gender</b>
-                      <span>
-                        <span>:</span>
-                        <span className="ml-9">Male</span>
-                      </span>
-                    </div>{" "}
-                    <div>
-                      <b>Birthday</b>
-                      <span>
-                        <span>:</span>
-                        <span className="ml-7">12/12/1212</span>
-                      </span>
-                    </div>{" "}
+                  {/* Basic Information */}
+                  <div className="mt-9">
+                    <h1 className="font-bold">Basic Information</h1>
+                    <div className="flex flex-col gap-1 mt-4">
+                      <div>
+                        <b>Gender</b>
+                        <span>
+                          <span>:</span>
+                          <span className="ml-9">Male</span>
+                        </span>
+                      </div>{" "}
+                      <div>
+                        <b>Birthday</b>
+                        <span>
+                          <span>:</span>
+                          <span className="ml-7">{user?.dob}</span>
+                        </span>
+                      </div>{" "}
+                    </div>
                   </div>
+                  <button
+                    type="button"
+                    onClick={() => handleEditBtn()}
+                    className="h-10 w-[170px] mt-6 bg-peach-900  font-medium rounded-[5px] text-white"
+                  >
+                    Edit Profile
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setEditProfile(true)}
-                  className="h-10 w-[170px] mt-6 bg-peach-900  font-medium rounded-[5px] text-white"
-                >
-                  Edit Profile
-                </button>
-              </div>
-            )}
-            {editProfile && <ProfileForm />}
+              )}
+              {editProfile && <ProfileForm handleEditBtn={handleEditBtn} />}
+            </div>
           </div>
         )}
 

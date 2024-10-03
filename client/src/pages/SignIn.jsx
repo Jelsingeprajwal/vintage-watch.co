@@ -17,7 +17,7 @@ const SignIn = () => {
         "http://localhost:3030/api/signin",
         formData
       );
-      // console.table(data);
+      console.table(data);
       setUser(data);
       console.log(user);
       setRedirect(true);
